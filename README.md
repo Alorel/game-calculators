@@ -1,1 +1,1 @@
-Various game calculators. View in HTML [https://alorel.github.io/game-calculators](here).
+Various game calculators. View in HTML [here](https://alorel.github.io/game-calculators).
