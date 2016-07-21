@@ -1,1 +1,1 @@
-Please refer to the gh-pages branch
+Various game calculators. View in HTML [https://alorel.github.io/game-calculators](here).

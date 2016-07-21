@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game calculators</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1 class="text-center">Game calculators</h1>
+    </header>
+
+    <ul class="nav nav-tabs">
+        <li class="dropdown">
+            <a href="javascript:;" data-toggle="dropdown">
+                <span>Felspire</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#felspire-healing-pct" data-toggle="tab">Healing potion %</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="felspire-healing-pct" class="tab-pane fade in active">
+            <form class="col-sm-6">
+                <h3>Settings</h3>
+                <table class="table table-bordered table-hover table-condensed">
+                    <tbody>
+                    <tr>
+                        <td><label for="_hpt-hpmax">Max HP:</label></td>
+                        <td><input id="_hpt-hpmax" class="form-control" type="number" value="0" min="0"
+                                   data-value-setting="hpt-max"/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="_hpt-hpplus" data-tooltip title="How much Healing potion +% you have">
+                                Healing potion +%:
+                            </label>
+                        </td>
+                        <td><input id="_hpt-hpplus" class="form-control" type="number" value="0" min="0"/></td>
+                    </tr>
+                    <tr>
+                        <td><strong>HP pack:</strong></td>
+                        <td>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="hpt-pack" type="radio" value="0" name="pack"
+                                               checked/>
+                                        <span>None</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="hpt-pack" type="radio" value="800" name="pack"/>
+                                        <span>Small</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="hpt-pack" type="radio" value="2000" name="pack"/>
+                                        <span>Medium</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="hpt-pack" type="radio" value="8000" name="pack"/>
+                                        <span>Large</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label>
+                                <input type="checkbox" name="no-waste" data-checkbox-setting="hpt-no-waste"/>
+                                <span data-tooltip
+                                      title="No waste mode makes sure you don't waste any HP pack healing by lowering the heal %">
+                                    No waste mode
+                                </span>
+                            </label>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            <div class="col-sm-6">
+                <h3>Result</h3>
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>HP potion (L)</th>
+                        <th>HP potion (M)</th>
+                        <th>HP potion (S)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Autodrink %</td>
+                        <td>
+                            <span id="_res-autodrink-L" data-tooltip title></span>
+                        </td>
+                        <td>
+                            <span id="_res-autodrink-M" data-tooltip title></span>
+                        </td>
+                        <td>
+                            <span id="_res-autodrink-S" data-tooltip title></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="application/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="assets/js/main.js"></script>
+</body>
+</html>
