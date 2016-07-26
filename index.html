@@ -41,7 +41,15 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#felspire-healing-pct" data-toggle="tab">Healing potion %</a>
+                    <a href="#felspire-healing-pct" data-toggle="tab" data-tooltip
+                       title="Health % when to drink health potions for optimum effect">
+                        <span>Healing potion %</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#felspire-pet-feed" data-toggle="tab" data-tooltip title="Pet feed requirements and costs">
+                        <span>Pet feed calculator</span>
+                    </a>
                 </li>
             </ul>
         </li>
@@ -137,6 +145,101 @@
                         </td>
                     </tr>
                     </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="felspire-pet-feed" class="tab-pane fade">
+            <form class="col-sm-6">
+                <h3>Settings</h3>
+                <table class="table table-bordered table-condensed table-hover">
+                    <tr>
+                        <td><strong>Pet feed required:</strong></td>
+                        <td>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="felsppet-reqfeed" type="radio" value="20"
+                                               name="felsppet-reqfeed"
+                                               checked/>
+                                        <span>Lvl 2</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="felsppet-reqfeed" type="radio" value="40"
+                                               name="felsppet-reqfeed"/>
+                                        <span>Lvl 3</span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input data-radio-setting="felsppet-reqfeed" type="radio" value="80"
+                                               name="felsppet-reqfeed"/>
+                                        <span>Lvl 4</span>
+                                    </label>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="felsppet-req-exp">Exp required:</label>
+                        </td>
+                        <td>
+                            <input type="number" min="0" value="0" data-value-setting="felsppet-req-exp"
+                                   id="felsppet-req-exp" class="form-control"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="felsppet-curr-exp">Current EXP:</label>
+                        </td>
+                        <td>
+                            <input type="number" min="0" value="0" data-value-setting="felsppet-curr-exp"
+                                   id="felsppet-curr-exp" class="form-control"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="col-sm-6">
+                <h3>Requirements:</h3>
+                <table class="table table-bordered table-condensed table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th># required</th>
+                        <th>Gold to create</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Lv1 feed</td>
+                        <td id="felsppet-feed1"></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Lv2 feed</td>
+                        <td id="felsppet-feed2"></td>
+                        <td id="felsppet-gold2"></td>
+                    </tr>
+                    <tr>
+                        <td>Lv3 feed</td>
+                        <td id="felsppet-feed3"></td>
+                        <td id="felsppet-gold3"></td>
+                    </tr>
+                    <tr>
+                        <td>Lv4 feed</td>
+                        <td id="felsppet-feed4"></td>
+                        <td id="felsppet-gold4"></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th></th>
+                        <th id="felsppet-gold-total"></th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

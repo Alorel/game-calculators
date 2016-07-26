@@ -3,6 +3,14 @@
         return +(Math.round(num + "e+2") + "e-2");
     }
 
+    Number.prototype.format = function () {
+        var s = this < 0 ? "-" : "",
+            i = parseInt(n = Math.abs(+this || 0).toFixed(2)) + "",
+            j = i.length;
+        j = j > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + "," : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + ",") + (2 ? "." + Math.abs(n - i).toFixed(2).slice(2) : "");
+    };
+
     // GLOBAL
     (function () {
         $("[data-tooltip]").tooltip({
@@ -74,12 +82,73 @@
                     healL += hpPack;
                 }
 
-                $autodrinkL.text(roundToTwo((maxHP - healL) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healL) + " HP");
-                $autodrinkM.text(roundToTwo((maxHP - healM) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healM) + " HP");
-                $autodrinkS.text(roundToTwo((maxHP - healS) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healS) + " HP");
+                $autodrinkL.text(roundToTwo((maxHP - healL) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healL).format() + " HP");
+                $autodrinkM.text(roundToTwo((maxHP - healM) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healM).format() + " HP");
+                $autodrinkS.text(roundToTwo((maxHP - healS) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healS).format() + " HP");
             };
 
         $container.find("input").on("change keyup", recalculate);
+        recalculate();
+    })();
+
+// Felspire pet feed
+    (function () {
+        var $outerContainer = $("#felspire-pet-feed"),
+            $feedRequired = $outerContainer.find("[name=felsppet-reqfeed]"),
+            $expRequired = $("#felsppet-req-exp"),
+            $currentExp = $("#felsppet-curr-exp"),
+            $f1 = $("#felsppet-feed1"),
+            $f2 = $("#felsppet-feed2"),
+            $g2 = $("#felsppet-gold2"),
+            $f3 = $("#felsppet-feed3"),
+            $g3 = $("#felsppet-gold3"),
+            $f4 = $("#felsppet-feed4"),
+            $g4 = $("#felsppet-gold4"),
+            $gtotal = $("#felsppet-gold-total"),
+            recalculate = function () {
+                var expPerFeed = parseInt($feedRequired.filter(":checked").val()),
+                    expRequired = parseInt($expRequired.val()) - parseInt($currentExp.val()),
+                    f4 = 0,
+                    f3 = 0,
+                    f2 = 0,
+                    f1 = 0;
+
+                switch (expPerFeed) {
+                    case 80:
+                        f4 = Math.ceil(expRequired / expPerFeed);
+                        f3 = f4 * 2;
+                        f2 = f3 * 2;
+                        f1 = f2 * 2;
+                        break;
+                    case 40:
+                        f3 = Math.ceil(expRequired / expPerFeed);
+                        f2 = f3 * 2;
+                        f1 = f2 * 2;
+                        break;
+                    case 20:
+                        f2 = Math.ceil(expRequired / expPerFeed);
+                        f1 = f2 * 2;
+                        break;
+                    default:
+                        f1 = Math.ceil(expRequired / expPerFeed);
+                }
+
+                var g2 = f2 * 150000,
+                    g3 = f3 * 300000,
+                    g4 = f4 * 450000;
+
+                $f1.text(f1);
+                $f2.text(f2);
+                $g2.text(g2.format());
+                $f3.text(f3);
+                $g3.text(g3.format());
+                $f4.text(f4);
+                $g4.text(g4.format());
+                $gtotal.text((g2 + g3 + g4).format());
+            };
+
+        $outerContainer.find("input").on("change keyup", recalculate);
+
         recalculate();
     })();
 })();
