@@ -4,7 +4,8 @@
     }
 
     Number.prototype.format = function () {
-        var s = this < 0 ? "-" : "",
+        var n = this,
+            s = n < 0 ? "-" : "",
             i = parseInt(n = Math.abs(+this || 0).toFixed(2)) + "",
             j = i.length;
         j = j > 3 ? j % 3 : 0;
