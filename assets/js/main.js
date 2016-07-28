@@ -72,9 +72,9 @@
             recalculate = function () {
                 var maxHP = parseFloat($maxHP.val()),
                     hpPlus = parseFloat($hpPlus.val()),
-                    healS = 800 / 100 * (100 + hpPlus),
-                    healM = 2000 / 100 * (100 + hpPlus),
-                    healL = 8000 / 100 * (100 + hpPlus);
+                    healS = 1600 / 100 * (100 + hpPlus),
+                    healM = 8000 / 100 * (100 + hpPlus),
+                    healL = 20000 / 100 * (100 + hpPlus);
 
                 if ($noWaste.is(":checked")) {
                     var hpPack = parseFloat($hpPack.filter(":checked").val());
