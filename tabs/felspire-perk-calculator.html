@@ -1,0 +1,40 @@
+<div id="felspire-perks" class="tab-pane fade">
+    <ul class="nav nav-tabs" id="felspire-perk-classes">
+        <li class="active">
+            <a href="#felspire-perks-saint" data-toggle="tab">Saint</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="felspire-perks-saint" class="tab-pane fade in active"></div>
+    </div>
+</div>
+<script>$.getScript("assets/js/felspire-perk-calculator.min.js");</script>
+<style>
+    #felspire-perks .tooltip-inner hr {
+        margin: 0
+    }
+
+    #felspire-perks [data-req] {
+        border: 1px ridge #000;
+        margin: 1px;
+        border-radius: 5px;
+        padding: 2px;
+        text-align: center;
+    }
+
+    #felspire-perks [data-counter]::after {
+        content: attr(data-curr) "/" attr(data-max)
+    }
+
+    #felspire-perks [data-allocated-points]:empty {
+        display: none
+    }
+
+    #felspire-perks [data-allocated-points]::before {
+        content: " ("
+    }
+
+    #felspire-perks [data-allocated-points]::after {
+        content: ")"
+    }
+</style>

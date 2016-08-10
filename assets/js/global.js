@@ -1,7 +1,8 @@
 (function (Math, localStorage, location) {
     var PAGES = [
         "felspire-pet-feed",
-        "felspire-healing-pct"
+        "felspire-healing-pct",
+        "felspire-perk-calculator"
     ];
     Math.roundToTwo = function (num) {
         return +(Math.round(num + "e+2") + "e-2");
@@ -16,20 +17,20 @@
         return s + (j ? i.substr(0, j) + "," : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + ",")
     };
 
-    function setImmediate(cb) {
+    window.async = function (cb) {
         setTimeout(cb, 0);
-    }
+    };
 
     function loadPages(pageArray, callback) {
         var tabContainer = $("#tabs-container"),
             pagesLoaded = 0,
             i = 0,
             cb = function (html) {
-                setImmediate(function () {
+                async(function () {
                     tabContainer.append(html);
                     pagesLoaded++;
                     if (pagesLoaded == pageArray.length) {
-                        setImmediate(callback);
+                        async(callback);
                     }
                 });
             };
