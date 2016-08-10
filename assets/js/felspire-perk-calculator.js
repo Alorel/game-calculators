@@ -503,7 +503,7 @@
                                 title = '<strong class="show">' + perks[i].name + '</strong><hr><strong>Max level effect: </strong><span>' + perks[i].desc
                                     + '</span>';
 
-                            if (pointsRequired !== 0) {
+                            if (pointsRequired != 0) {
                                 title += '<hr><small>Requires ' + pointsRequired + ' points to be allocated in the '
                                     + trees[tree_i] + ' tree</small>';
                             }
@@ -533,4 +533,33 @@
     $("[id^=felspire-perks-]").each(function () {
         recalculate($(this));
     });
+    $("body").append('<style>\
+    .tooltip-inner hr {\
+        margin: 0\
+    }\
+\
+    [data-req] {\
+        border: 1px ridge #000;\
+        margin: 1px;\
+        border-radius: 5px;\
+        padding: 2px;\
+        text-align: center;\
+    }\
+\
+    [data-counter]::after {\
+        content: attr(data-curr) "/" attr(data-max)\
+    }\
+\
+    [data-allocated-points]:empty {\
+        display: none\
+    }\
+\
+    [data-allocated-points]::before {\
+        content: " ("\
+    }\
+\
+    [data-allocated-points]::after {\
+        content: ")"\
+    }\
+    </style>');
 })(Object, parseInt);

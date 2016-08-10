@@ -1,9 +1,8 @@
 (function () {
-    var $container = $("#felspire-healing-pct"),
-        $maxHP = $("#_hpt-hpmax"),
+    var $maxHP = $("#_hpt-hpmax"),
         $hpPlus = $("#_hpt-hpplus"),
-        $hpPack = $container.find("[name=pack]"),
-        $noWaste = $container.find("[name=no-waste]"),
+        $hpPack = $("[name=pack]"),
+        $noWaste = $("[name=no-waste]"),
         $autodrinkL = $("#_res-autodrink-L"),
         $autodrinkM = $("#_res-autodrink-M"),
         $autodrinkS = $("#_res-autodrink-S"),
@@ -26,6 +25,6 @@
             $autodrinkS.text(Math.roundToTwo((maxHP - healS) / maxHP * 100) + "%").attr("data-original-title", (maxHP - healS).format() + " HP");
         };
 
-    $container.find("input").on("change keyup", recalculate);
+    $("input").on("change keyup", recalculate);
     recalculate();
 })();

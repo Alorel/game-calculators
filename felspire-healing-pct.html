@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game calculators</title>
+    <title>Felspire Healing % Calculator</title>
     <link rel="stylesheet"
           href="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/css/bootstrap.min.css"/>
     <link rel="stylesheet"
@@ -46,7 +46,7 @@
                 </button>
                 <a class="navbar-brand" href="/game-calculators">Game Calculators</a>
             </div>
-            <div class="navbar-brand navbar-right" id="title"></div>
+            <div class="navbar-brand navbar-right" id="title">Felspire Healing % Calculator</div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -82,8 +82,99 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="application/javascript"
             src="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="assets/js/global.min.js"></script><h1>Welcome</h1>
-<p>I'll be publishing all the miscellaneous game calculators I end up creating here. Bookmark this page. Do it now.</p><hr style="clear:both"/>
+    <script type="application/javascript" src="assets/js/global.min.js"></script><form class="col-sm-6">
+    <h3>Settings</h3>
+    <table class="table table-bordered table-hover table-condensed">
+        <tbody>
+        <tr>
+            <td><label for="_hpt-hpmax">Max HP:</label></td>
+            <td><input id="_hpt-hpmax" class="form-control" type="number" value="0" min="0"
+                       data-value-setting="hpt-max"/></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="_hpt-hpplus" data-tooltip title="How much Healing potion +% you have">
+                    Healing potion +%:
+                </label>
+            </td>
+            <td><input id="_hpt-hpplus" class="form-control" type="number" value="0" min="0"
+                       data-value-setting="hpt-hppluspct"/></td>
+        </tr>
+        <tr>
+            <td><strong>HP pack:</strong></td>
+            <td>
+                <ul class="list-unstyled">
+                    <li>
+                        <label>
+                            <input data-radio-setting="hpt-pack" type="radio" value="0" name="pack"
+                                   checked/>
+                            <span>None</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input data-radio-setting="hpt-pack" type="radio" value="800" name="pack"/>
+                            <span>Small</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input data-radio-setting="hpt-pack" type="radio" value="2000" name="pack"/>
+                            <span>Medium</span>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input data-radio-setting="hpt-pack" type="radio" value="8000" name="pack"/>
+                            <span>Large</span>
+                        </label>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <label>
+                    <input type="checkbox" name="no-waste" data-checkbox-setting="hpt-no-waste"/>
+                    <span data-tooltip
+                          title="No waste mode makes sure you don't waste any HP pack healing by lowering the heal %">
+                                    No waste mode
+                                </span>
+                </label>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<div class="col-sm-6">
+    <h3>Result</h3>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+        <tr>
+            <th></th>
+            <th>HP potion (L)</th>
+            <th>HP potion (M)</th>
+            <th>HP potion (S)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Autodrink %</td>
+            <td>
+                <span id="_res-autodrink-L" data-tooltip title></span>
+            </td>
+            <td>
+                <span id="_res-autodrink-M" data-tooltip title></span>
+            </td>
+            <td>
+                <span id="_res-autodrink-S" data-tooltip title></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="assets/js/felspire-healing-pct.min.js"></script>
+<!-- {title:Felspire Healing % Calculator} --><hr style="clear:both"/>
 <footer>
     <small class="text-center">
         <span class="show">Created by s220.alorel</span>

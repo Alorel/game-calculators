@@ -1,6 +1,5 @@
 (function () {
-    var $outerContainer = $("#felspire-pet-feed"),
-        $feedRequired = $outerContainer.find("[name=felsppet-reqfeed]"),
+    var $feedRequired = $("[name=felsppet-reqfeed]"),
         $expRequired = $("#felsppet-req-exp"),
         $currentExp = $("#felsppet-curr-exp"),
         $f1 = $("#felsppet-feed1"),
@@ -53,7 +52,7 @@
             $gtotal.text((g2 + g3 + g4).format());
         };
 
-    $outerContainer.find("input").on("change keyup", recalculate);
+    $("input").on("change keyup", recalculate);
 
     recalculate();
 })();

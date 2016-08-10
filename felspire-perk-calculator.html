@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Game calculators</title>
+    <title>Felspire Perk Calculator</title>
     <link rel="stylesheet"
           href="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/css/bootstrap.min.css"/>
     <link rel="stylesheet"
@@ -46,7 +46,7 @@
                 </button>
                 <a class="navbar-brand" href="/game-calculators">Game Calculators</a>
             </div>
-            <div class="navbar-brand navbar-right" id="title"></div>
+            <div class="navbar-brand navbar-right" id="title">Felspire Perk Calculator</div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -82,8 +82,16 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="application/javascript"
             src="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="assets/js/global.min.js"></script><h1>Welcome</h1>
-<p>I'll be publishing all the miscellaneous game calculators I end up creating here. Bookmark this page. Do it now.</p><hr style="clear:both"/>
+    <script type="application/javascript" src="assets/js/global.min.js"></script><ul class="nav nav-tabs" id="felspire-perk-classes">
+    <li class="active">
+        <a href="#felspire-perks-saint" data-toggle="tab">Saint</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div id="felspire-perks-saint" class="tab-pane fade in active"></div>
+</div>
+<script src="assets/js/felspire-perk-calculator.min.js"></script>
+<!-- {title:Felspire Perk Calculator} --><hr style="clear:both"/>
 <footer>
     <small class="text-center">
         <span class="show">Created by s220.alorel</span>
