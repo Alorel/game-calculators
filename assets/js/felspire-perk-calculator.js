@@ -1,4 +1,4 @@
-(function (Object, parseInt) {
+(function (Object, parseInt, location) {
     function perk(name, maxLevel, effect) {
         return {
             name: name,
@@ -348,6 +348,10 @@
             }
         },
         CLASSES = Object.keys(PERKS),
+        $exportTextfield = $("#export-url").focus(function () {
+            $(this).select()
+        }),
+        $exportModal = $("#export-modal"),
         TOOLTIP_SETTINGS = {
             container: 'body',
             html: true
@@ -360,6 +364,30 @@
 
             $class.find("[data-counter]").attr("data-curr", 0);
             recalculate($class, false);
+        },
+        exportBuild = function () {
+            var $trees = $(this).closest(".tab-pane").find(">.col-md-4"),
+                i = 0,
+                curr,
+                allocations = [];
+
+            for (; i < $trees.length; i++) {
+                allocations[i] = [];
+                $($trees[i]).find("td").each(function () {
+                    allocations[i].push($(this).is(":empty") || (curr = $(this).find("[data-counter]").attr("data-curr")) == 0 ? "" : $(this).find("[data-counter]").attr("data-curr"));
+                });
+                allocations[i] = allocations[i].join(":");
+            }
+
+            $exportTextfield.val(
+                location.protocol
+                + "//"
+                + location.host
+                + location.pathname
+                + "?perks="
+                + encodeURIComponent(allocations.join("|"))
+            );
+            $exportModal.modal();
         },
         clickMinus = function () {
             clickPlusMinus($(this), false);
@@ -415,7 +443,7 @@
             }
 
             //cycle each tree
-            $class.find(">div").each(function () {
+            $class.find(".col-md-4").each(function () {
                 var $container = $(this),
                     $treeAllocated = $container.find("[data-allocated-points]"),
                     treeAllocated,
@@ -520,7 +548,7 @@
                                     + '</span>';
 
                             if (pointsRequired != 0) {
-                                title += '<hr><small>Requires ' + pointsRequired + ' points to be allocated in the '
+                                title += '<hr><small class="text-warning">Requires ' + pointsRequired + ' points to be allocated in the '
                                     + trees[tree_i] + ' tree</small>';
                             }
 
@@ -545,7 +573,10 @@
 
         $container.append(
             '<hr style="clear:both"/><div><span>Level required: </span><strong data-total-lvl>350</strong></div>',
-            $('<button class="btn btn-primary btn">Reset</button>').click(reset)
+            $("<div class='text-center'/>").append(
+                $('<button class="btn btn-danger btn-sm">Reset</button>').click(reset),
+                $('<button class="btn btn-primary btn-sm">Export</button>').click(exportBuild)
+            )
         );
     }
 
@@ -553,4 +584,4 @@
         recalculate($(this));
     });
     $("body").append('<style>.tooltip-inner hr{margin:0}[data-req]{border:1px ridge #000;margin:1px;border-radius:5px;padding:2px;text-align:center}[data-counter]::after{content:attr(data-curr) "/" attr(data-max)}[data-allocated-points]:empty{display:none}[data-allocated-points]::before{content:" ("}[data-allocated-points]::after{content:")"}td:hover{background-color:#f5f5f5}</style>');
-})(Object, parseInt);
+})(Object, parseInt, location);
