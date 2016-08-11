@@ -355,6 +355,12 @@
         clickPlus = function () {
             clickPlusMinus($(this), true);
         },
+        reset = function () {
+            var $class = $(this).closest(".tab-pane");
+
+            $class.find("[data-counter]").attr("data-curr", 0);
+            recalculate($class, false);
+        },
         clickMinus = function () {
             clickPlusMinus($(this), false);
         },
@@ -480,7 +486,7 @@
         for (var tree_i = 0; tree_i < trees.length; tree_i++) {
             var $wrapper = $("<div class='col-md-4'>\
             <h4><span>" + trees[tree_i] + "</span> <span data-allocated-points></span></h4>\
-            <table class='table table-condensed table-bordered table-hover'>\
+            <table class='table table-condensed table-bordered'>\
            <tbody></tbody>\
            </table>\
            </div>"),
@@ -527,39 +533,14 @@
             $container.append($wrapper);
         }
 
-        $container.append('<hr style="clear:both"/><span>Level required: </span><strong data-total-lvl>350</strong>');
+        $container.append(
+            '<hr style="clear:both"/><div><span>Level required: </span><strong data-total-lvl>350</strong></div>',
+            $('<button class="btn btn-primary btn">Reset</button>').click(reset)
+        );
     }
 
     $("[id^=felspire-perks-]").each(function () {
         recalculate($(this));
     });
-    $("body").append('<style>\
-    .tooltip-inner hr {\
-        margin: 0\
-    }\
-\
-    [data-req] {\
-        border: 1px ridge #000;\
-        margin: 1px;\
-        border-radius: 5px;\
-        padding: 2px;\
-        text-align: center;\
-    }\
-\
-    [data-counter]::after {\
-        content: attr(data-curr) "/" attr(data-max)\
-    }\
-\
-    [data-allocated-points]:empty {\
-        display: none\
-    }\
-\
-    [data-allocated-points]::before {\
-        content: " ("\
-    }\
-\
-    [data-allocated-points]::after {\
-        content: ")"\
-    }\
-    </style>');
+    $("body").append('<style>.tooltip-inner hr{margin:0}[data-req]{border:1px ridge #000;margin:1px;border-radius:5px;padding:2px;text-align:center}[data-counter]::after{content:attr(data-curr) "/" attr(data-max)}[data-allocated-points]:empty{display:none}[data-allocated-points]::before{content:" ("}[data-allocated-points]::after{content:")"}td:hover{background-color:#f5f5f5}</style>');
 })(Object, parseInt);
