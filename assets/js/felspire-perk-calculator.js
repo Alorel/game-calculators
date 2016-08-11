@@ -579,9 +579,32 @@
             )
         );
     }
+    $("body").append('<style>.tooltip-inner hr{margin:0}[data-req]{border:1px ridge #000;margin:1px;border-radius:5px;padding:2px;text-align:center}[data-counter]::after{content:attr(data-curr) "/" attr(data-max)}[data-allocated-points]:empty{display:none}[data-allocated-points]::before{content:" ("}[data-allocated-points]::after{content:")"}td:hover{background-color:#f5f5f5}</style>');
+
+    (function () {
+        var GET = parseGET();
+        if (GET.perks) {
+            var $trees = $(".tab-content>.active table"),
+                trees = GET.perks.split("|"),
+                i = 0,
+                j,
+                perks,
+                $perks;
+
+            for (; i < trees.length; i++) {
+                perks = trees[i].split(":");
+                $perks = $($trees.get(i)).find("td");
+
+                for (j = 0; j < perks.length; j++) {
+                    if (perks[j]) {
+                        $($perks.get(j)).find("[data-counter]").attr("data-curr", perks[j]);
+                    }
+                }
+            }
+        }
+    })();
 
     $("[id^=felspire-perks-]").each(function () {
         recalculate($(this));
     });
-    $("body").append('<style>.tooltip-inner hr{margin:0}[data-req]{border:1px ridge #000;margin:1px;border-radius:5px;padding:2px;text-align:center}[data-counter]::after{content:attr(data-curr) "/" attr(data-max)}[data-allocated-points]:empty{display:none}[data-allocated-points]::before{content:" ("}[data-allocated-points]::after{content:")"}td:hover{background-color:#f5f5f5}</style>');
 })(Object, parseInt, location);
