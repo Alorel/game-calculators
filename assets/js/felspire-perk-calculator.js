@@ -443,6 +443,7 @@
                         $buttons = $perk.find("button"),
                         $counter = $perk.find("[data-counter]"),
                         perkAllocated = parseInt($counter.attr("data-curr")),
+                        perkMax = parseInt($counter.attr("data-max")),
                         previousPointsRequired = $perk.parent().attr("data-req");
 
                     if (parseInt(previousPointsRequired) > getAllocatedInPreviousTiers(tierAllocated, previousPointsRequired)) {
@@ -454,6 +455,15 @@
                         }
                     } else {
                         $buttons.prop("disabled", false);
+                    }
+
+                    //Apply css
+                    if (perkAllocated == 0) {
+                        $perk.attr("class", "");
+                    } else if (perkAllocated < perkMax) {
+                        $perk.attr("class", "warning");
+                    } else if (!$perk.is(":empty")) {
+                        $perk.attr("class", "success");
                     }
                 });
 
