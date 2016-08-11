@@ -1,4 +1,4 @@
-(function (Math, localStorage, location) {
+(function (Math, localStorage, location, window, decodeURIComponent) {
     var PAGES = [
         "felspire-pet-feed",
         "felspire-healing-pct",
@@ -19,6 +19,24 @@
 
     window.async = function (cb) {
         setTimeout(cb, 0);
+    };
+
+    window.parseGET = function () {
+        var ret = {},
+            search = location.search.split("&"),
+            i = 0,
+            item;
+
+        if (search.length) {
+            search[0] = search[0].substr(1, search[0].length);
+
+            for (; i < search.length; i++) {
+                item = search[i].split("=");
+                ret[decodeURIComponent(item[0])] = decodeURIComponent(item[1]);
+            }
+        }
+
+        return ret;
     };
 
     function loadPages(pageArray, callback) {
@@ -85,4 +103,4 @@
             }).change();
         }
     });
-})(Math, typeof localStorage !== "undefined" ? localStorage : null, location);
+})(Math, typeof localStorage !== "undefined" ? localStorage : null, location, window, decodeURIComponent);
