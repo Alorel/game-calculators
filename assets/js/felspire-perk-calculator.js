@@ -349,7 +349,7 @@
         },
         CLASSES = Object.keys(PERKS),
         TOOLTIP_SETTINGS = {
-            container: '#felspire-perks',
+            container: 'body',
             html: true
         },
         clickPlus = function () {
