@@ -1,4 +1,4 @@
-(function (Math, localStorage, location, window, decodeURIComponent) {
+(function (Math, localStorage, location, window, decodeURIComponent, document) {
     Math.roundToTwo = function (num) {
         return +(Math.round(num + "e+2") + "e-2");
     };
@@ -33,6 +33,10 @@
 
         return ret;
     };
+
+    $.get("https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/css/bootstrap-theme.min.css", {}, function (r) {
+        $(document.body).append('<style>' + r + '</style>');
+    });
 
     $(document).ready(function () {
         $("[data-tooltip]").tooltip({
@@ -76,4 +80,4 @@
             }
         });
     });
-})(Math, typeof localStorage !== "undefined" ? localStorage : null, location, window, decodeURIComponent);
+})(Math, typeof localStorage !== "undefined" ? localStorage : null, location, window, decodeURIComponent, document);
