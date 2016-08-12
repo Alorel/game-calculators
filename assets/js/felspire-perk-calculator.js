@@ -8,7 +8,8 @@
     }
 
     var PERKS = {
-            // template: {name: "XXXXXXXXXX", lvl: 999, desc: "XXXXXXXXXXXXXX"},
+            // template:
+            // {name: "XXXXXXXXXX", lvl: 999, desc: "XXXXXXXXXXXXXX"},
             saint: {
                 Damage: {
                     0: [
@@ -345,6 +346,122 @@
                         }
                     ]
                 }
+            },
+            archer: {
+                Damage: {
+                    0: [
+                        {
+                            name: "Mortal Arrows",
+                            lvl: 25,
+                            desc: "Releases Rain of Arrows and increases the damage dealt by 60%."
+                        },
+                        {
+                            name: "Wind Arrow",
+                            lvl: 25,
+                            desc: "When attacking the target with the HP lower than 30%, the target will receive 100% extra damage"
+                        },
+                        {name: "Shadow Blade", lvl: 25, desc: "Permanently increases Hit by 17.5%"},
+                        null
+                    ],
+                    20: [
+                        {
+                            name: "Frost Seal",
+                            lvl: 20,
+                            desc: "When you attack the enemy with Ice Shards, the enemy will be frozen and rooted for 1 sec and receive 208% extra damage"
+                        },
+                        {
+                            name: "Soul Impact (A)",
+                            lvl: 10,
+                            desc: "When attacking a target that is stunned or rooted, damage dealt by skills will be increased by 113%"
+                        },
+                        null,
+                        {
+                            name: "Soul Reaper",
+                            lvl: 20,
+                            desc: "Grants a 40% chance to make the target become weak when the target is being shot and decrease the target's MSPD by 30% and decrease the effect of HP potions by 20% over 6 secs."
+                        }
+                    ],
+                    40: [
+                        {
+                            name: "Multi Shot",
+                            lvl: 10,
+                            desc: "When attacking with Triple Shot, weapon ATK will be increased by 35%"
+                        },
+                        {
+                            name: "Requiem (A)",
+                            lvl: 25,
+                            desc: "When attacking a target with HP lower than 30%, you ignore 77.5% DEF of target. If you have acquired Requiem (A) and Requiem (S) only the one of the higher level will be counted."
+                        },
+                        {
+                            name: "Goddess Guardian",
+                            lvl: 10,
+                            desc: "When you are equipped with a necklace that is refined to +60 or higher, your weapon ATK will be increased by 35%."
+                        },
+                        {
+                            name: "Killing Spree (A)",
+                            lvl: 5,
+                            desc: "Grants a 10% chance to increase atk by 10% over 5 secs when attacking. If you have acquired Killing Spree (A) and Killing Spree (S) only the one of the higher level will be counted.",
+                            pvp: true
+                        }
+                    ],
+                    80: [
+                        {
+                            name: "Penetration",
+                            lvl: 10,
+                            desc: "Deals extra damage to the target when releasing Penetration. The damage is equal to 58% ATK."
+                        },
+                        null,
+                        {
+                            name: "Goddess Blessing",
+                            lvl: 5,
+                            desc: "After you activate 5 T7+ sets, your skill damage will be increased by 75%"
+                        }, null
+                    ],
+                    120: [
+                        null,
+                        {
+                            name: "Starfall",
+                            lvl: 1,
+                            desc: "When your HP is lower than 30%, the target that is attacked by Lightning Arrow will be paralysed after 5 secs and you will deal 700% damage and decrease the target's MSPD by 30% over 5 secs."
+                        },
+                        {
+                            name: "Frost Cyclone",
+                            lvl: 5,
+                            desc: "The damage dealt in PvP will be increased by 66.5% while damage received will be increased by 33%",
+                            pvp: true
+                        },
+                        {
+                            name: "Raging Soul (A)",
+                            lvl: 10,
+                            desc: "Grants a 50% chance to deal splash damage to the enemies within the surrounding 20 slots when you kill a target. The damage equals to 50% of the target's max HP. If you have acquired Raging Soul (A) and Raging Soul (S) only the one of the higher level will be counted.",
+                            pvp: true
+                        }
+                    ],
+                    160: [
+                        {
+                            name: "Thunderbolt",
+                            lvl: 1,
+                            desc: "When releasing Lightning Arrow, the 6th target will die and the other targets will be stunned for 3 secs. CD: 60 secs.",
+                            pvp: true
+                        },
+                        {
+                            name: "Inverse Arrow",
+                            lvl: 1,
+                            desc: "When your HP is lower than 50%, each of your hits will decrease the target's MSPD by 10% over 3 secs. The effect can be stacked up to 5 times. After the effect is stacked up to 5 times, the next attack will deal 5 times the damage dealt (no limit on the target of the next attack)."
+                        },
+                        {
+                            name: "Feather Asylum",
+                            lvl: 5,
+                            desc: "When you are equipped with lv3 wings or higher, your ASPD will be increased by 17.5"
+                        },
+                        {
+                            name: "Searing Arrow",
+                            lvl: 2,
+                            desc: "Grants a 6% chance to release a debuff for the target to decrease the target's HP by 15% of max HP over 6 secs.",
+                            pvp: true
+                        }
+                    ]
+                }
             }
         },
         CLASSES = Object.keys(PERKS),
@@ -386,6 +503,7 @@
                 + location.pathname
                 + "?perks="
                 + encodeURIComponent(allocations.join("|"))
+                + location.hash
             );
             $exportModal.modal();
         },
@@ -578,12 +696,19 @@
                 $('<button class="btn btn-primary btn-sm">Export</button>').click(exportBuild)
             )
         );
+
+        delete PERKS[CLASSES[class_i]];
     }
     $("body").append('<style>.tooltip-inner hr{margin:0}[data-req]{border:1px ridge #000;margin:1px;border-radius:5px;padding:2px;text-align:center}[data-counter]::after{content:attr(data-curr) "/" attr(data-max)}[data-allocated-points]:empty{display:none}[data-allocated-points]::before{content:" ("}[data-allocated-points]::after{content:")"}td:hover{background-color:#f5f5f5}</style>');
 
     (function () {
         var GET = parseGET();
         if (GET.perks) {
+            if (location.hash) {
+                $(".tab-content>div").removeClass("in active");
+                $(location.hash).addClass("in active");
+            }
+
             var $trees = $(".tab-content>.active table"),
                 trees = GET.perks.split("|"),
                 i = 0,
