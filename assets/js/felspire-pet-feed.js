@@ -1,4 +1,4 @@
-(function () {
+$(document).ready(function () {
     var $feedRequired = $("[name=felsppet-reqfeed]"),
         $expRequired = $("#felsppet-req-exp"),
         $currentExp = $("#felsppet-curr-exp"),
@@ -54,5 +54,5 @@
 
     $("input").on("change keyup", recalculate);
 
-    recalculate();
-})();
+    setTimeout(recalculate,10);
+});

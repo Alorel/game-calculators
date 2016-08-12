@@ -1,4 +1,4 @@
-(function () {
+$(document).ready(function () {
     var $maxHP = $("#_hpt-hpmax"),
         $hpPlus = $("#_hpt-hpplus"),
         $hpPack = $("[name=pack]"),
@@ -26,5 +26,5 @@
         };
 
     $("input").on("change keyup", recalculate);
-    recalculate();
-})();
+    setTimeout(recalculate, 10);
+});
