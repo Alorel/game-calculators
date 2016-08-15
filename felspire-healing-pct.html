@@ -89,6 +89,7 @@
          data-ad-client="ca-pub-0609730000430845"
          data-ad-slot="2009390488"
          data-ad-format="auto"></ins>
+    <script type="application/javascript" src="https://cdn.rawgit.com/Alorel/alo-cfg/1.0/dist/alo-cfg.min.js"></script>
     <script type="application/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="application/javascript"
@@ -100,7 +101,7 @@
         <tr>
             <td><label for="_hpt-hpmax">Max HP:</label></td>
             <td><input id="_hpt-hpmax" class="form-control" type="number" value="0" min="0"
-                       data-value-setting="hpt-max"/></td>
+                       data-cfg="hpt-max"/></td>
         </tr>
         <tr>
             <td>
@@ -109,7 +110,7 @@
                 </label>
             </td>
             <td><input id="_hpt-hpplus" class="form-control" type="number" value="0" min="0"
-                       data-value-setting="hpt-hppluspct"/></td>
+                       data-cfg="hpt-hppluspct"/></td>
         </tr>
         <tr>
             <td><strong>HP pack:</strong></td>
@@ -117,26 +118,26 @@
                 <ul class="list-unstyled">
                     <li>
                         <label>
-                            <input data-radio-setting="hpt-pack" type="radio" value="0" name="pack"
+                            <input data-cfg="hpt-pack" type="radio" value="0" name="pack"
                                    checked/>
                             <span>None</span>
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input data-radio-setting="hpt-pack" type="radio" value="800" name="pack"/>
+                            <input data-cfg="hpt-pack" type="radio" value="800" name="pack"/>
                             <span>Small</span>
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input data-radio-setting="hpt-pack" type="radio" value="2000" name="pack"/>
+                            <input data-cfg="hpt-pack" type="radio" value="2000" name="pack"/>
                             <span>Medium</span>
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input data-radio-setting="hpt-pack" type="radio" value="8000" name="pack"/>
+                            <input data-cfg="hpt-pack" type="radio" value="8000" name="pack"/>
                             <span>Large</span>
                         </label>
                     </li>
@@ -146,7 +147,7 @@
         <tr>
             <td colspan="2">
                 <label>
-                    <input type="checkbox" name="no-waste" data-checkbox-setting="hpt-no-waste"/>
+                    <input type="checkbox" name="no-waste" data-cfg="hpt-no-waste"/>
                     <span data-tooltip
                           title="No waste mode makes sure you don't waste any HP pack healing by lowering the heal %">
                                     No waste mode

@@ -1,4 +1,4 @@
-(function (Math, localStorage, location, window, decodeURIComponent, document) {
+(function (Math, localStorage, location, window, decodeURIComponent, document, AloCfg) {
     Math.roundToTwo = function (num) {
         return +(Math.round(num + "e+2") + "e-2");
     };
@@ -51,33 +51,7 @@
         if (location.hash) {
             $("a[href='" + location.hash + "']").click();
         }
-        $("[data-value-setting]").on("change keyup", function () {
-            localStorage.setItem($(this).data("value-setting"), $(this).val());
-        }).each(function () {
-            var val = localStorage.getItem($(this).data("value-setting"));
-            if (val !== null) {
-                $(this).val(val);
-            }
-        });
 
-        $("[data-radio-setting]").change(function () {
-            localStorage.setItem($(this).data("radio-setting"), $(this).val());
-        }).each(function () {
-            var selected = localStorage.getItem($(this).data("radio-setting"));
-
-            if (selected !== null && $(this).attr("value") === selected) {
-                $(this).prop("checked", true);
-            }
-        });
-
-        $("[data-checkbox-setting]").change(function () {
-            localStorage.setItem($(this).data("checkbox-setting"), $(this).is(":checked") ? 1 : 0);
-        }).each(function () {
-            var checked = localStorage.getItem($(this).data("checkbox-setting")) == 1;
-
-            if (checked != null) {
-                $(this).prop("checked", !!checked);
-            }
-        });
+        AloCfg.setPrefix("gamecalc").setValues().bind();
     });
-})(Math, typeof localStorage !== "undefined" ? localStorage : null, location, window, decodeURIComponent, document);
+})(Math, typeof localStorage !== "undefined" ? localStorage : null, location, window, decodeURIComponent, document, AloCfg);
