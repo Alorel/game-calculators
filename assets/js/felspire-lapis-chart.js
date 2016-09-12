@@ -42,7 +42,7 @@
             $lapisTarget = $('<select data-id="lapis_target" data-cfg="lapis_target_' + slots[i] + '"/>'),
             $enhanceTarget = $('<select data-id="enhance_target" data-cfg="enhance_target_' + slots[i] + '"/>');
 
-        for (var j = 0; j < 11; j++) {
+        for (var j = 0; j <= lapisRequired.length; j++) {
             $lapisLevel.append($('<option value="' + j + '">T' + j + '</option>'));
             $enhanceLevel.append($('<option value="' + j + '">+' + j + '</option>'));
             $lapisTarget.append($('<option value="' + j + '">T' + j + '</option>'));
@@ -93,14 +93,18 @@
             lapisLevel = parseInt($tr.find('[data-id=lapis_curr]').val()),
             enhanceLevel = parseInt($tr.find('[data-id=enhance_curr]').val()),
             lapisTarget = parseInt($tr.find('[data-id=lapis_target]').val()),
-            enhanceTarget = parseInt($tr.find('[data-id=enhance_target]').val());
+            enhanceTarget = parseInt($tr.find('[data-id=enhance_target]').val()),
+            enhanceReqd = 0,
+            lapisReqd = 0;
 
+        for (var i = enhanceLevel + 1; i <= enhanceTarget; i++) {
+            enhanceReqd += enhanceRequired[i][1];
+            lapisReqd += enhanceRequired[i][0];
+        }
 
-        var enhanceReqd = enhanceRequired[enhanceTarget][1] - enhanceRequired[enhanceLevel][1],
-            lapisReqd = enhanceRequired[enhanceTarget][0] - enhanceRequired[enhanceLevel][0];
-
-
-        lapisReqd += lapisRequired[lapisTarget] - lapisRequired[lapisLevel];
+        for (i = lapisLevel + 1; i <= lapisTarget; i++) {
+            lapisReqd += lapisRequired[i];
+        }
 
         if (enhanceReqd < 0) {
             enhanceReqd = 0;
