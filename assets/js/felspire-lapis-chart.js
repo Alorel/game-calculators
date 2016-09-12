@@ -97,7 +97,7 @@
             enhanceReqd = 0,
             lapisReqd = 0;
 
-        for (var i = enhanceLevel + 1; i <= enhanceTarget; i++) {
+        for (var i = enhanceLevel + 1; i < enhanceTarget; i++) {
             enhanceReqd += enhanceRequired[i][1];
             lapisReqd += enhanceRequired[i][0];
         }
