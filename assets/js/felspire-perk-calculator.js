@@ -130,7 +130,7 @@
                         {
                             name: "Confine",
                             lvl: 25,
-                            desc: "Being hit by Divine Spark, the target's ATK will be decreased by 100% over 3 secs."
+                            desc: "Being hit by Divine Spark, the target's ATK will be decreased by 10% over 3 secs."
                         },
                         {name: "Condor Guardian", lvl: 25, desc: "Equip Skyhawk to increase your Dodge by 45%."},
                         {
@@ -244,7 +244,7 @@
                         {
                             name: "Restrain",
                             lvl: 5,
-                            desc: "When attacking the target, Skyhawk has a 100% to decelerate the target by 2% over 2 secs."
+                            desc: "When attacking the target, Skyhawk has a 100% to decelerate the target by 10% over 2 secs."
                         },
                         {
                             name: "Miracle",
