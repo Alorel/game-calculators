@@ -1,18 +1,5 @@
 (function (parseInt) {
     var lapisRequired = [
-            0, //0
-            2, //1
-            2, //2
-            4, //3
-            8, //4
-            14, //5
-            30, //6
-            40, //7
-            50, //8
-            70, //9
-            90 //10
-        ],
-        enhanceRequired = [
             [0, 0], //0
             [2, 3], //1
             [2, 2], //2
@@ -23,7 +10,8 @@
             [40, 50], //7
             [50, 70], //8
             [70, 90], //9
-            [90, 110] //10
+            [90, 110], //10
+            [120, 150] // 11
         ],
         $slots = $("#slots"),
         slots = ['Head', 'Body', 'Legs', 'Feet', 'Arms'],
@@ -98,12 +86,12 @@
             lapisReqd = 0;
 
         for (var i = enhanceLevel + 1; i <= enhanceTarget; i++) {
-            enhanceReqd += enhanceRequired[i][1];
-            lapisReqd += enhanceRequired[i][0];
+            enhanceReqd += lapisRequired[i][1];
+            lapisReqd += lapisRequired[i][0];
         }
 
         for (i = lapisLevel + 1; i <= lapisTarget; i++) {
-            lapisReqd += lapisRequired[i];
+            lapisReqd += lapisRequired[i][0];
         }
 
         if (enhanceReqd < 0) {
