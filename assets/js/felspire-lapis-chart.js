@@ -21,16 +21,16 @@
             Legs: 31,
             Feet: 15,
             Arms: 15
-        };
+        }, j, i;
 
-    for (var i = 0; i < slots.length; i++) {
+    for (i = 0; i < slots.length; i++) {
         var $tr = $("<tr data-slot='" + slots[i] + "'/>"),
             $lapisLevel = $('<select data-id="lapis_curr" data-cfg="lapis_curr_' + slots[i] + '"/>'),
             $enhanceLevel = $('<select data-id="enhance_curr" data-cfg="enhance_curr_' + slots[i] + '"/>'),
             $lapisTarget = $('<select data-id="lapis_target" data-cfg="lapis_target_' + slots[i] + '"/>'),
             $enhanceTarget = $('<select data-id="enhance_target" data-cfg="enhance_target_' + slots[i] + '"/>');
 
-        for (var j = 0; j < lapisRequired.length; j++) {
+        for (j = 0; j < lapisRequired.length; j++) {
             $lapisLevel.append($('<option value="' + j + '">T' + j + '</option>'));
             $enhanceLevel.append($('<option value="' + j + '">+' + j + '</option>'));
             $lapisTarget.append($('<option value="' + j + '">T' + j + '</option>'));
@@ -110,4 +110,30 @@
 
     setTimeout($refreshCallback, 300);
     $("#refresh-btn").click($refreshCallback);
+
+    var $chartTbody = $("#chart-table").find(">tbody"),
+        tLapis, eEnhance, cLapis, cEnhance;
+
+    for (i = 1; i <= lapisRequired.length; i++) {
+        tLapis = lapisRequired[i][0];
+        eEnhance = lapisRequired[i][1];
+        cLapis = 0;
+        cEnhance = 0;
+
+        for (j = 0; j <= i; j++) {
+            cLapis += lapisRequired[j][0] * 2;
+            cEnhance += lapisRequired[j][1];
+        }
+
+        $chartTbody.append(
+            $('<tr/>').append(
+                '<td>' + i + '</td>',
+                '<td>' + tLapis + '</td>',
+                '<td>' + tLapis + '</td>',
+                '<td>' + eEnhance + '</td>',
+                '<td>' + cLapis + '</td>',
+                '<td>' + cEnhance + '</td>'
+            )
+        );
+    }
 })(parseInt);
