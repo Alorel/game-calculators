@@ -149,7 +149,7 @@
                         {
                             name: "Holy Buffer",
                             lvl: 20,
-                            desc: "When you are equipped with armor that is refined to +90 or higher, it increase the basic DEF of the armor by 18%"
+                            desc: "When you are equipped with armor that is refined to +90 or higher, it increase the basic DEF of the armor by 300%"
                         },
                         {
                             name: "Prayer of Life",
