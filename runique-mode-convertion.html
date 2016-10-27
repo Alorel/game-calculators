@@ -27,7 +27,7 @@
         ga('create', 'UA-76993341-2', 'Game Calculators');
         ga('send', 'pageview');
     </script>
-    <title>Felspire Pet Feed Calculator</title>
+    <title>Runique Mode Convertion</title>
     <link rel="stylesheet"
           href="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/css/bootstrap.min.css"/>
     <link rel="shortcut icon" type="image/x-icon"
@@ -52,7 +52,7 @@
                 </button>
                 <a class="navbar-brand" href="/game-calculators">Game Calculators</a>
             </div>
-            <div class="navbar-brand navbar-right" id="title">Felspire Pet Feed Calculator</div>
+            <div class="navbar-brand navbar-right" id="title">Runique Mode Convertion</div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -115,101 +115,35 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="application/javascript"
             src="https://cdn.rawgit.com/Alorel/game-calculators/gh-pages/assets/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="assets/js/global.min.js"></script><form class="col-sm-6">
-    <h3>Settings</h3>
-    <table class="table table-bordered table-condensed table-hover">
-        <tr>
-            <td><strong>Pet feed required:</strong></td>
-            <td>
-                <ul class="list-unstyled">
-                    <li>
-                        <label>
-                            <input data-cfg="felsppet-reqfeed" type="radio" value="20"
-                                   name="felsppet-reqfeed"
-                                   checked/>
-                            <span>Lvl 2</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input data-cfg="felsppet-reqfeed" type="radio" value="40"
-                                   name="felsppet-reqfeed"/>
-                            <span>Lvl 3</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input data-cfg="felsppet-reqfeed" type="radio" value="80"
-                                   name="felsppet-reqfeed"/>
-                            <span>Lvl 4</span>
-                        </label>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="felsppet-req-exp">Exp required:</label>
-            </td>
-            <td>
-                <input type="number" min="0" value="0" data-cfg="felsppet-req-exp"
-                       id="felsppet-req-exp" class="form-control"/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="felsppet-curr-exp">Current EXP:</label>
-            </td>
-            <td>
-                <input type="number" min="0" value="0" data-cfg="felsppet-curr-exp"
-                       id="felsppet-curr-exp" class="form-control"/>
-            </td>
-        </tr>
-    </table>
-</form>
-<div class="col-sm-6">
-    <h3>Requirements:</h3>
-    <table class="table table-bordered table-condensed table-hover">
-        <thead>
-        <tr>
-            <th></th>
-            <th># required</th>
-            <th>Gold to create</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Lv1 feed</td>
-            <td id="felsppet-feed1"></td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>Lv2 feed</td>
-            <td id="felsppet-feed2"></td>
-            <td id="felsppet-gold2"></td>
-        </tr>
-        <tr>
-            <td>Lv3 feed</td>
-            <td id="felsppet-feed3"></td>
-            <td id="felsppet-gold3"></td>
-        </tr>
-        <tr>
-            <td>Lv4 feed</td>
-            <td id="felsppet-feed4"></td>
-            <td id="felsppet-gold4"></td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Total</th>
-            <th></th>
-            <th id="felsppet-gold-total"></th>
-        </tr>
-        </tfoot>
-    </table>
+    <script type="application/javascript" src="assets/js/global.min.js"></script><hr/>
+<p>Click any of the columns to sort!</p>
+<hr/>
+<div class="form form-inline">
+    <div class="form-group">
+        <label for="curr_mode">Current game mode:</label>
+        <select class="form-control" id="curr_mode" data-cfg="runique-conv-curr-mode"></select>
+    </div>
+    <div class="form-group">
+        <label for="target_mode">Target game mode:</label>
+        <select class="form-control" id="target_mode" data-cfg="runique-conv-target-mode"></select>
+    </div>
 </div>
-<script src="assets/js/felspire-pet-feed.min.js" async></script>
-<!-- {title:Felspire Pet Feed Calculator} --><hr style="clear:both"/>
+<table class="table table-striped table-condensed table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Skill</th>
+        <th>Pre-change exp required</th>
+        <th>Pre-change level required</th>
+        <th>Post-change exp</th>
+        <th>Post-change level wanted</th>
+    </tr>
+    </thead>
+    <tbody id="conv-tbody">
+    </tbody>
+</table>
+<script src="assets/js/jquery.tablesorter.min.js"></script>
+<script src="assets/js/runique-mode-convertion.min.js"></script>
+<!-- {title:Runique Mode Convertion} --><hr style="clear:both"/>
 <footer>
     <ins class="adsbygoogle"
          style="display:block"
