@@ -162,6 +162,7 @@
             Summoning: 99
         },
         multiplyBy = 1,
+        MAX_EXP = 200000000,
         levelFromExp = function (exp) {
             exp = parseInt(exp);
             for (var i = expRequired.length - 1; i > 0; i--) {
@@ -181,6 +182,10 @@
                 postExp = expRequired[postLvl],
                 preExp = postExp * multiplyBy,
                 preLevel = levelFromExp(preExp);
+
+            if (preExp > MAX_EXP) {
+                preExp = MAX_EXP;
+            }
 
             $tr.find("[data-id=postexp]").text(postExp.format());
             $tr.find("[data-id=currlvl]").text(preLevel);
