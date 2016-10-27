@@ -152,7 +152,7 @@
             Fletching: 85,
             Slayer: 99,
             Hunter: 91,
-            Mining: 80,
+            Mining: 90,
             Smithing: 92,
             Fishing: 90,
             Cooking: 93,
