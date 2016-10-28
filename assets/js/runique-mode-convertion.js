@@ -184,7 +184,7 @@
                 preLevel = levelFromExp(preExp);
 
             if (preExp > MAX_EXP) {
-                preExp = MAX_EXP;
+                preExp = "Over " + MAX_EXP.format();
             }
 
             $tr.find("[data-id=postexp]").text(postExp.format());
