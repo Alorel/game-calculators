@@ -1,0 +1,43 @@
+{
+  "short_name"      : "GameCalc",
+  "name"            : "Game Calculators",
+  "description"     : "Miscellaneous game calculators",
+  "icons"           : [
+    {
+      "src"  : "/img/launcher-24.png",
+      "type" : "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src"  : "/img/launcher-48.png",
+      "type" : "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src"  : "/img/launcher-96.png",
+      "type" : "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src"  : "/img/launcher-192.png",
+      "type" : "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src"  : "/img/launcher-384.png",
+      "type" : "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src"  : "/img/launcher-768.png",
+      "type" : "image/png",
+      "sizes": "798x798"
+    }
+  ],
+  "start_url"       : "/index.html?launcher=true",
+  "display"         : "standalone",
+  "theme_color"     : "#ffffff",
+  "background_color": "#ffffff",
+  "dir"             : "ltr",
+  "lang"            : "en"
+}

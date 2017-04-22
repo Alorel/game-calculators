@@ -237,7 +237,6 @@ require(['jquery', 'jquery.tablesorter.min'], function () {
 
   function applyIcons() {
     var glyph;
-    console.log($th.attr("class"));
 
     if ($th.hasClass("headerSortUp")) {
       glyph = "glyphicon-chevron-up";

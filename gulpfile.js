@@ -10,7 +10,7 @@ const ugly    = require('gulp-uglify');
 const CONF = {
   build_dir: './dist/',
   uglify   : {
-    src: ['./assets/**/*.js', './assets/**/*.json']
+    src: ['./assets/**/*.js']
   },
   pug      : {
     nav_pages: {
@@ -88,23 +88,47 @@ gulp.task('uglify', () => {
              .pipe(gulp.dest(CONF.build_dir));
 });
 
+const minifyJSON = async () => {
+  const names = ['manifest.json'];
+
+  let promises = [];
+  for (let src of names) {
+    let inStr  = await fs.readFileAsync(path.join('./assets', src), 'utf8');
+    let outStr = JSON.stringify(JSON.parse(inStr));
+    promises.push(fs.writeFileAsync(path.join(CONF.build_dir, src), outStr, 'utf8'));
+  }
+
+  return await Promise.all(promises).then(() => {});
+};
+
 const watchers = {
-  pug   : () => {
+  pug    : () => {
     const cargo = Cargo((tasks, callback) => {
       setImmediate(console.log, 'Rendering some pugs');
       renderPugs().then(() => callback()).catch(callback);
     });
-    return watch(['./pugs/**/*.pug'], {}, (a, b, c) => {
+    return watch(['./pugs/**/*.pug'], {}, () => {
       cargo.push(1);
     });
   },
-  uglify: () => watch(CONF.uglify.src)
+  minJSON: () => {
+    const cargo = Cargo((tasks, callback) => {
+      setImmediate(console.log, 'Minifying JSON');
+      minifyJSON().then(callback).catch(callback);
+    });
+    return watch(['./assets/*.json'], {}, () => {
+      cargo.push(1);
+    });
+  },
+  uglify : () => watch(CONF.uglify.src)
   .pipe(ugly())
   .pipe(gulp.dest(CONF.build_dir))
 };
 
+gulp.task('min:json', minifyJSON);
 gulp.task('watch:pug', watchers.pug);
 gulp.task('watch:ugly', watchers.uglify);
-gulp.task('watch', ['watch:pug', 'watch:ugly']);
+gulp.task('watch:minJSON', watchers.minJSON);
+gulp.task('watch', ['watch:pug', 'watch:ugly', 'watch:minJSON']);
 
-gulp.task('default', ['pug', 'uglify']);
+gulp.task('default', ['pug', 'uglify', 'min:json']);

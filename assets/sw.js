@@ -1,4 +1,4 @@
-var version = 'v8::';
+var version = 'v9::';
 
 self.addEventListener("install", function (event) {
   event.waitUntil(
@@ -24,17 +24,10 @@ self.addEventListener("install", function (event) {
                             '/js/require.js',
                             '/js/runique-mode-convertion.js',
                             '/js/text.js',
-                            '/favicon.ico',
                             'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf',
-                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular',
                             '/felspire-healing-pct.html',
                             '/felspire-lapis-chart.html',
                             '/felspire-perk-calculator.html',

@@ -11,10 +11,11 @@ block content
   table.table.table-striped.table-condensed.table-bordered.table-hover
     thead#conv-head
       tr
-        each i in ['Skill', 'Pre-change exp required', 'Pre-change level required', 'Post-change exp', 'Post-change level wanted']
-          th.clearfix
-            span.pull-left= i
-            span.pull-right.glyphicon
+        th.clearfix
+          span.pull-left Skill
+          span.pull-right.glyphicon
+        each i in ['Pre-change exp required', 'Pre-change level required', 'Post-change exp', 'Post-change level wanted']
+          th.text-left= i
     tbody#conv-tbody
 
 block append scripts
