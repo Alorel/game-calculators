@@ -66,4 +66,6 @@ require([
   } else {
     console.error('CLIENT: service worker is not supported.');
   }
+
+  setTimeout(require, 1500, ['adsense']);
 });

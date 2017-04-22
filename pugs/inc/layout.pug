@@ -15,6 +15,10 @@ html(lang='en')
       link(rel='preload' as='script' href='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
       link(rel='preload' as='script' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
       link(rel='preload' as='script' href='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
+      link(rel='preconnect' href='https://googleads.g.doubleclick.net')
+      link(rel='preconnect' href='https://google.com')
+      link(rel='preconnect' href='https://tpc.googlesyndication.com')
+      link(rel='preconnect' href='https://cm.g.doubleclick.net')
     script
       :uglify-js
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -59,4 +63,3 @@ body
     include:uglify-js ../../script/alo-cfg.min.js
     include:uglify-js ../../script/global.js
   block scripts
-  script(src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async)
