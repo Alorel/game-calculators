@@ -1,4 +1,4 @@
-require(['jquery', 'global'], function ($) {
+require(['jquery'], function ($) {
   function perk(name, maxLevel, effect) {
     return {
       name  : name,

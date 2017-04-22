@@ -1,4 +1,4 @@
-require(['jquery', 'jquery.tablesorter.min', 'global'], function () {
+require(['jquery', 'jquery.tablesorter.min'], function () {
   var expRequired       = [
         null, //lvl 0
         0,

@@ -1,7 +1,6 @@
-var version = 'v2::';
+var version = 'v8::';
 
 self.addEventListener("install", function (event) {
-  console.log('Installing service worker');
   event.waitUntil(
     /* The caches built-in is a promise-based API that helps you cache responses,
      as well as finding and deleting them.
@@ -19,15 +18,13 @@ self.addEventListener("install", function (event) {
        */
       return cache.addAll([
                             '/',
-                            '/js/felspire-healing-pct.js',
                             '/js/felspire-lapis-chart.js',
                             '/js/felspire-perk-calculator.js',
-                            '/js/felspire-pet-feed.js',
-                            '/js/global.js',
                             '/js/jquery.tablesorter.min.js',
                             '/js/require.js',
                             '/js/runique-mode-convertion.js',
                             '/js/text.js',
+                            '/favicon.ico',
                             'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
@@ -38,7 +35,7 @@ self.addEventListener("install", function (event) {
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf',
                             'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular',
-                            '/felspire-heaing-pct.html',
+                            '/felspire-healing-pct.html',
                             '/felspire-lapis-chart.html',
                             '/felspire-perk-calculator.html',
                             '/felspire-pet-feed.html',
@@ -46,26 +43,21 @@ self.addEventListener("install", function (event) {
                             '/runique-mode-conversion.html'
                           ]);
     })
-    .then(function () {
-      console.log('WORKER: install completed');
-    })
     .catch(function (e) {
-      console.error('Worker initialisation error', e);
+      console.error('Worker initialisation error: ', e.message);
     })
   );
 });
 
 self.addEventListener("fetch", function (event) {
-  console.log('WORKER: fetch event in progress.');
 
   /* We should only cache GET requests, and deal with the rest of method in the
    client-side, by handling failed POST,PUT,PATCH,etc. requests.
    */
-  if (event.request.method !== 'GET') {
+  if (event.request.method !== 'GET' || event.request.url.indexOf("data:") === 0) {
     /* If we don't block the event as shown below, then the request will go to
      the network as usual.
      */
-    console.log('WORKER: fetch event ignored.', event.request.method, event.request.url);
     return;
   }
   /* Similar to event.waitUntil in that it blocks the fetch event on a promise.
@@ -96,7 +88,6 @@ self.addEventListener("fetch", function (event) {
       /* We return the cached response immediately if there is one, and fall
        back to waiting on the network as usual.
        */
-      console.log('WORKER: fetch event', cached ? '(cached)' : '(network)', event.request.url);
       return cached || networked;
 
       function fetchedFromNetwork(response) {
@@ -104,8 +95,6 @@ self.addEventListener("fetch", function (event) {
          This is the response that will be stored on the ServiceWorker cache.
          */
         var cacheCopy = response.clone();
-
-        console.log('WORKER: fetch response from network.', event.request.url);
 
         caches
         // We open a cache to store the response for this request.
@@ -115,10 +104,10 @@ self.addEventListener("fetch", function (event) {
            available to caches.match(event.request) calls, when looking
            for cached responses.
            */
-          cache.put(event.request, cacheCopy);
+          return cache.put(event.request, cacheCopy);
         })
-        .then(function () {
-          console.log('WORKER: fetch response stored in cache.', event.request.url);
+        .catch(function (e) {
+          console.error('Failed to cache response: ', e.message);
         });
 
         // Return the response so that the promise is settled in fulfillment.
@@ -141,8 +130,6 @@ self.addEventListener("fetch", function (event) {
          - Generate a Response programmaticaly, as shown below, and return that
          */
 
-        console.log('WORKER: fetch request failed in both cache and network.');
-
         /* Here we're creating a response programmatically. The first parameter is the
          response body, and the second one defines the options for the response.
          */
@@ -162,7 +149,6 @@ self.addEventListener("activate", function (event) {
   /* Just like with the install event, event.waitUntil blocks activate on a promise.
    Activation will fail unless the promise is fulfilled.
    */
-  console.log('WORKER: activate event in progress.');
 
   event.waitUntil(
     caches
@@ -185,9 +171,6 @@ self.addEventListener("activate", function (event) {
           return caches.delete(key);
         })
       );
-    })
-    .then(function () {
-      console.log('WORKER: activate completed.');
     })
   );
 });

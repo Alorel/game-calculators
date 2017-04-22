@@ -1,4 +1,4 @@
-require(['jquery', 'global'], function ($) {
+require(['jquery'], function ($) {
   var lapisRequired = [
         [0, 0], //0
         [2, 3], //1

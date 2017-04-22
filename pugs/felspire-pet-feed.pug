@@ -1,10 +1,8 @@
 extends inc/layout.pug
 
 block append scripts
-  script(src='/js/felspire-pet-feed.js' async)
-
-block append preload
-  link(rel='preload' as='script' href='/js/felspire-pet-feed.js')
+  script
+    include:uglify-js ../script/felspire-pet-feed.js
 
 block content
   form.col-md-6

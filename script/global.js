@@ -1,7 +1,7 @@
-define([
-         'jquery',
-         'bootstrap'
-       ], function ($) {
+require([
+          'jquery',
+          'bootstrap'
+        ], function ($) {
   var localStorage = 'localStorage' in window ? localStorage : null;
 
   Math.roundToTwo = function (num) {

@@ -1,4 +1,4 @@
-require(['jquery', 'global'], function ($) {
+require(['jquery'], function ($) {
   var $maxHP      = $("#_hpt-hpmax"),
       $hpPlus     = $("#_hpt-hpplus"),
       $hpPack     = $("[name=pack]"),

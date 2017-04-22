@@ -1,4 +1,4 @@
-require(['jquery', 'global'], function ($) {
+require(['jquery'], function ($) {
   var $feedRequired = $("[name=felsppet-reqfeed]"),
       $expRequired  = $("#felsppet-req-exp"),
       $currentExp   = $("#felsppet-curr-exp"),
