@@ -1,4 +1,4 @@
-require(['jquery'], function ($) {
+require(['jquery', 'bootstrap'], function ($) {
   function perk(name, maxLevel, effect) {
     return {
       name  : name,
