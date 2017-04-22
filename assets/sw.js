@@ -1,4 +1,4 @@
-var version = 'v1::';
+var version = 'v2::';
 
 self.addEventListener("install", function (event) {
   console.log('Installing service worker');
@@ -18,7 +18,32 @@ self.addEventListener("install", function (event) {
        after making HTTP requests for each of them.
        */
       return cache.addAll([
-                            '/js/felspire-healing-pct.js'
+                            '/',
+                            '/js/felspire-healing-pct.js',
+                            '/js/felspire-lapis-chart.js',
+                            '/js/felspire-perk-calculator.js',
+                            '/js/felspire-pet-feed.js',
+                            '/js/global.js',
+                            '/js/jquery.tablesorter.min.js',
+                            '/js/require.js',
+                            '/js/runique-mode-convertion.js',
+                            '/js/text.js',
+                            'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.eot?#iefix',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff2',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.woff',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.ttf',
+                            'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular',
+                            '/felspire-heaing-pct.html',
+                            '/felspire-lapis-chart.html',
+                            '/felspire-perk-calculator.html',
+                            '/felspire-pet-feed.html',
+                            '/index.html',
+                            '/runique-mode-conversion.html'
                           ]);
     })
     .then(function () {
