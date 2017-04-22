@@ -1,0 +1,42 @@
+extends inc/layout.pug
+
+block content
+  h4 Calculator
+  table.table.table-condensed.table-bordered.table-hover.table-striped
+    thead
+      tr
+        th Slot
+        th Current level
+        th Target level
+        th Lapis required
+        th Enhance required
+        th Shard cost
+    tbody#slots
+    tfoot
+      tr#totals
+        th(colspan=3).clearfix
+          button.btn.btn-sm.btn-default.pull-left#refresh-btn(type='button') Refresh
+          span.pull-right Total
+        each i in ['lapis', 'enh', 'shards']
+          th(data-id=`total-${i}`) Calculating...
+  h4 Lapis chart
+  table.table.table-condensed.table-bordered.table-hover.table-striped#chart-table
+    thead
+      tr
+        th(rowspan=2).text-center Tier
+        th.text-center T increase
+        th(colspan=2).text-center + increase
+        th(colspan=2).text-center Cumulative
+      tr
+        th Lapis required
+        th Lapis required
+        th Enhance required
+        th Lapis
+        th Enhance
+    tbody
+
+block append scripts
+  script(src='/js/felspire-lapis-chart.js' async)
+
+block append preload
+  link(rel='preload' as='script' href='/js/felspire-lapis-chart.js')

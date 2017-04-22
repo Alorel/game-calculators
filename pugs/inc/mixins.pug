@@ -1,0 +1,14 @@
+mixin googleAd(slot, styles)
+  - var css = Object.assign({display:'block'}, styles || {});
+  ins.adsbygoogle(
+  style= css
+  data-ad-client='ca-pub-0609730000430845',
+  data-ad-slot= slot,
+  data-ad-format='auto'
+  )
+
+mixin externalLink(url, text, attr)
+  a(href= url, target='_blank', rel='noopener')&attributes(attr || {})= text
+
+mixin initJS(url)
+  script(data-main= url src='/js/require.js')

@@ -1,0 +1,63 @@
+extends inc/layout.pug
+
+block append scripts
+  script(src='/js/felspire-pet-feed.js' async)
+
+block append preload
+  link(rel='preload' as='script' href='/js/felspire-pet-feed.js')
+
+block content
+  form.col-md-6
+    h3 Settings:
+    table.table.table-bordered.table-condensed.table-hover
+      tbody
+        tr
+          td
+            strong Pet feed required:
+          td
+            ul.list-unstyled
+              li
+                label
+                  input(data-cfg='felsppet-reqfeed' type='radio' value=20 name='felsppet-reqfeed' checked)
+                  span Lvl 2
+              li
+                label
+                  input(data-cfg='felsppet-reqfeed' type='radio' value=40 name='felsppet-reqfeed' checked)
+                  span Lvl 3
+              li
+                label
+                  input(data-cfg='felsppet-reqfeed' type='radio' value=80 name='felsppet-reqfeed' checked)
+                  span Lvl 4
+        tr
+          td
+            label(for='felsppet-req-exp') Exp required:
+          td
+            input.form-control#felsppet-req-exp(type='number' min=0 value=0 data-cfg='felsppet-req-exp')
+        tr
+          td
+            label(for='felsppet-curr-exp') Current exp:
+          td
+            input.form-control#felsppet-curr-exp(type='number' min=0 value=0 data-cfg='felsppet-curr-exp')
+  .col-sm-6
+    h3 Requirements:
+    table.table.table-bordered.table-condensed.table-hover
+      thead
+        tr
+          th
+          th # required
+          th Gold to create
+      tbody
+        tr
+          td Lv1 feed
+          td#felsppet-feed1
+          td 0
+        each i in [2,3,4]
+          tr
+            td Lv#{i} feed
+            td(id=`felsppet-feed${i}`)
+            td(id=`felsppet-gold${i}`)
+      tfoot
+        tr
+          th Total
+          th
+          th#felsppet-gold-total
