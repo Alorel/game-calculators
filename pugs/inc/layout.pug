@@ -11,10 +11,13 @@ html(lang='en')
     block preload
       link(rel='preload' as='style' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
       link(rel='preload' as='style' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
+      link(rel='preload' as='script' href='/js/require.js')
+      link(rel='preload' as='script' href='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+      link(rel='preload' as='script' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+      link(rel='preload' as='script' href='/js/alo-cfg.min.js')
+      link(rel='preload' as='script' href='/js/global.js')
     block dns-prefetch
       link(rel='preconnect' href='https://www.google-analytics.com')
-      link(rel='preconnect' href='https://ajax.googleapis.com')
-      link(rel='preconnect' href='https://maxcdn.bootstrapcdn.com')
     title Game calculators
     link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -33,7 +36,13 @@ body
           span.show Created by s220.alorel
           +externalLink('https://github.com/Alorel', 'See more of my GitHub stuff', {'class': 'show'})
           div
-            span Hosted with love by
+            span Hosted
+            |
+            |
+            em with love
+            |
+            |
+            span by
             |
             |
             +externalLink('https://www.netlify.com', 'Netlify')
