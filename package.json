@@ -1,30 +1,30 @@
 {
-  "name": "game-calculators",
-  "version": "1.0.0",
-  "description": "Please refer to the gh-pages branch",
-  "main": "index.js",
-  "scripts": {
+  "name"           : "game-calculators",
+  "version"        : "1.0.0",
+  "description"    : "Please refer to the gh-pages branch",
+  "main"           : "index.js",
+  "scripts"        : {
     "start": "static-server --port 3015 ./dist"
   },
-  "private": true,
-  "repository": {
+  "private"        : true,
+  "repository"     : {
     "type": "git",
-    "url": "git+https://github.com/Alorel/game-calculators.git"
+    "url" : "git+https://github.com/Alorel/game-calculators.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
+  "author"         : "",
+  "license"        : "ISC",
+  "bugs"           : {
     "url": "https://github.com/Alorel/game-calculators/issues"
   },
-  "homepage": "https://github.com/Alorel/game-calculators#readme",
+  "homepage"       : "https://github.com/Alorel/game-calculators#readme",
   "devDependencies": {
-    "async.cargo": "^0.5.2",
-    "bluebird": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-uglify": "^2.1.2",
-    "gulp-watch": "^4.3.11",
+    "async.cargo"            : "^0.5.2",
+    "bluebird"               : "^3.5.0",
+    "gulp"                   : "^3.9.1",
+    "gulp-uglify"            : "^2.1.2",
+    "gulp-watch"             : "^4.3.11",
     "jstransformer-uglify-js": "^1.2.0",
-    "pug": "^2.0.0-beta.12",
-    "static-server": "^2.0.4"
+    "pug"                    : "^2.0.0-beta.12",
+    "static-server"          : "^2.0.4"
   }
 }

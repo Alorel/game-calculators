@@ -53,20 +53,22 @@ try {
 }
 
 const renderPugs = async () => {
+  let basenames = [];
   return fs.readdirAsync('./pugs', 'utf8')
            .map(i => `./pugs/${i}`)
            .filter(async path => (await fs.statAsync(path)).isFile())
            .map(src => {
              const dirname  = path.dirname(src);
              const basename = path.basename(src, path.extname(src));
+             basenames.push(basename);
              return {
                src,
-               dest: path.normalize(path.join(dirname, '..', CONF.build_dir, `${basename}.html`))
+               dest: path.normalize(path.join(dirname, '..', CONF.build_dir, `${basename}.html`)),
+               basename
              };
            })
            .map(spec => {
-             spec.pug = pug.renderFile(spec.src, CONF.pug);
-             delete spec.src;
+             spec.pug = pug.renderFile(spec.src, Object.assign({basenames, basename: spec.basename}, CONF.pug));
              return spec;
            })
            .then(specs => {

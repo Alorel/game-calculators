@@ -10,17 +10,15 @@ html(lang='en')
       include:uglify-js ../../script/ga-include.js
     block preload
       link(rel='preload' as='style' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-      link(rel='preload' as='script' href='/js/require.js')
-      link(rel='preload' as='script' href='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
-      link(rel='preload' as='script' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-      link(rel='preload' as='script' href='/js/alo-cfg.min.js')
-      link(rel='preload' as='script' href='/js/global.js')
-    link(rel='preload' as='style' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
+      link(rel='preload' as='style' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
     block dns-prefetch
-      link(rel='dns-prefetch' href='https://www.google-analytics.com')
+      link(rel='preconnect' href='https://www.google-analytics.com')
+      link(rel='preconnect' href='https://ajax.googleapis.com')
+      link(rel='preconnect' href='https://maxcdn.bootstrapcdn.com')
     title Game calculators
     link(rel='shortcut icon' type='image/x-icon' href='/favicon.ico')
     link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
 body
   .container
     +googleAd(2524094486)
@@ -35,17 +33,10 @@ body
           span.show Created by s220.alorel
           +externalLink('https://github.com/Alorel', 'See more of my GitHub stuff', {'class': 'show'})
           div
-            span Hosted with
-            |
-            |
-            span.glyphicon.glyphicon-heart
-            |
-            |
-            span by
+            span Hosted with love by
             |
             |
             +externalLink('https://www.netlify.com', 'Netlify')
   script(src='/js/require.js')
   script(src='/js/require-conf.js')
   block scripts
-  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
