@@ -1,0 +1,24 @@
+extends inc/layout.pug
+
+block content
+  .form.form-inline
+    .form-group
+      label(for='curr_mode') Current game mode:
+      select.form-control#curr_mode(data-cfg='runique-conv-curr-mode')
+    .form-group
+      label(for='target_mode') Target game mode:
+      select.form-control#target_mode(data-cfg='runique-conv-target-mode')
+  table.table.table-striped.table-condensed.table-bordered.table-hover
+    thead#conv-head
+      tr
+        each i in ['Skill', 'Pre-change exp required', 'Pre-change level required', 'Post-change exp', 'Post-change level wanted']
+          th.clearfix
+            span.pull-left= i
+            span.pull-right.glyphicon
+    tbody#conv-tbody
+
+block append scripts
+  script(src='/js/runique-mode-convertion.js' async)
+
+block append preload
+  link(rel='preload' as='script' href='/js/runique-mode-convertion.js')

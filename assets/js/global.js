@@ -1,8 +1,7 @@
 define([
          'jquery',
-         'alo-cfg',
          'bootstrap'
-       ], function ($, AloCfg) {
+       ], function ($) {
   var localStorage = 'localStorage' in window ? localStorage : null;
 
   Math.roundToTwo = function (num) {

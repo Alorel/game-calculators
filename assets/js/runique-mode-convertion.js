@@ -1,4 +1,4 @@
-require(['jquery', 'global'], function () {
+require(['jquery', 'jquery.tablesorter.min', 'global'], function () {
   var expRequired       = [
         null, //lvl 0
         0,
@@ -197,6 +197,8 @@ require(['jquery', 'global'], function () {
       $currMode         = $("#curr_mode").change(recalculate),
       $targetMode       = $("#target_mode").change(recalculate),
       $convTbody        = $("#conv-tbody"),
+      $thead            = $convTbody.closest('table').find("thead"),
+      $th               = $thead.find("th").first(),
       $convTrs,
       $option,
       i;
@@ -232,4 +234,26 @@ require(['jquery', 'global'], function () {
 
   setTimeout(recalculate, 1000);
   $convTbody.closest('table').tablesorter();
+
+  function applyIcons() {
+    var glyph;
+    console.log($th.attr("class"));
+
+    if ($th.hasClass("headerSortUp")) {
+      glyph = "glyphicon-chevron-up";
+    } else if ($th.hasClass("headerSortDown")) {
+      glyph = "glyphicon-chevron-down";
+    } else {
+      glyph = "glyphicon-sort";
+    }
+
+    $th.find(".glyphicon").removeClass("glyphicon-sort glyphicon-chevron-down glyphicon-chevron-up").addClass(glyph);
+  }
+
+  try {
+    document.getElementById("conv-head").addEventListener('click', applyIcons, true);
+    applyIcons();
+  } catch (e) {
+    console.error(e);
+  }
 });

@@ -6,7 +6,6 @@ mixin googleAd(slot, styles)
   data-ad-slot= slot,
   data-ad-format='auto'
   )
-  script!= '(adsbygoogle=window.adsbygoogle||[]).push({});'
 
 mixin externalLink(url, text, attr)
   a(href= url, target='_blank', rel='noopener')&attributes(attr || {})= text
