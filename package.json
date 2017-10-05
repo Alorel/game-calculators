@@ -21,7 +21,7 @@
     "async.cargo"            : "^0.5.2",
     "bluebird"               : "^3.5.0",
     "gulp"                   : "^3.9.1",
-    "gulp-uglify"            : "^2.1.2",
+    "gulp-uglify"            : "^3.0.0",
     "gulp-watch"             : "^4.3.11",
     "jstransformer-uglify-js": "^1.2.0",
     "pug"                    : "^2.0.0-beta.12",
