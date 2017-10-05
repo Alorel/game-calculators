@@ -4,8 +4,7 @@
   "description"    : "Please refer to the gh-pages branch",
   "main"           : "index.js",
   "scripts"        : {
-    "start": "static-server --port 3015 ./dist",
-    "test": "echo 1"
+    "start": "static-server --port 3015 ./dist"
   },
   "private"        : true,
   "repository"     : {
