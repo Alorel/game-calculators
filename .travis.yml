@@ -1,18 +1,6 @@
 language: node_js
-sudo: false
-dist: trusty
 node_js:
   - 8
 
-cache:
-  directories:
-    - node_modules
-    - ~/.npm
-    - ~/.nvm
-
-script:
-  - echo 1
-
-notifications:
-  on_success: change
-  on_failure: always
+install: echo 0
+script: echo 0
