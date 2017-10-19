@@ -1,6 +1,2 @@
-language: node_js
-node_js:
-  - 8
-
-install: echo 0
-script: echo 0
+language: generic
+script: true
